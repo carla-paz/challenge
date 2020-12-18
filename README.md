@@ -1,2 +1,2 @@
-# challenge
-API that helps you create your CV
+# curriculum-api
+API to create your CV
