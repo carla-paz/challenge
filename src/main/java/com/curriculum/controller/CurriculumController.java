@@ -17,34 +17,34 @@ import com.curriculum.model.PersonId;
 import com.curriculum.services.CurriculimService;
 
 @RestController
-@RequestMapping(value = "/curriculum")
+@RequestMapping(value = "/api/v1")
 public class CurriculumController {
 
 	@Autowired
 	private CurriculimService curriculumService;
 
-	@GetMapping(value = "/getperson", produces = "application/json")
+	@GetMapping(value = "/curriculum", produces = "application/json")
 	@ResponseStatus(value = HttpStatus.OK)
 	public List<Person> getPerson() {
 		List<Person> persons = curriculumService.getPerson();
 		return persons;
 	}
 
-	@PostMapping(value = "/createperson", produces = "application/json")
+	@PostMapping(value = "/curriculum", produces = "application/json")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public PersonId createPerson(@RequestBody Person person) {
 		PersonId personId = curriculumService.createPerson(person);
 		return personId;
 	}
 
-	@PutMapping(value = "/updateperson/{id}", produces = "application/json")
+	@PutMapping(value = "/curriculum/{id}", produces = "application/json")
 	@ResponseStatus(value = HttpStatus.OK)
 	public Person updatePerson(@RequestBody Person person, @PathVariable("id") String id) {
 		Person people = curriculumService.updatePerson(person, id);
 		return people;
 	}
 
-	@DeleteMapping(value = "/deleteperson/{id}", produces = "application/json")
+	@DeleteMapping(value = "/curriculum/{id}", produces = "application/json")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public void deletePerson(@PathVariable("id") String id) {
 		curriculumService.deletePerson(id);

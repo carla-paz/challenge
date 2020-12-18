@@ -17,7 +17,7 @@ public class CurriculumServiceimpl implements CurriculimService {
 
 	@Override
 	public List<Person> getPerson() {
-		log.info("Sucessfully from mongoDB");
+		log.info("Retrieved successfully from MongoDB");
 		List<Person> persons = curriculumRepository.findAll();
 		return persons;
 	}
@@ -25,7 +25,7 @@ public class CurriculumServiceimpl implements CurriculimService {
 	@Override
 	public PersonId createPerson(Person person) {
 		String personIdDb = curriculumRepository.save(person).getId();
-		log.info("Created sucessfully on mongoDB");
+		log.info("Successfully created in MongoDB");
 		PersonId personId = new PersonId();
 		personId.setId(personIdDb);
 		return personId;
@@ -35,6 +35,7 @@ public class CurriculumServiceimpl implements CurriculimService {
 	public Person deletePerson(String id) {
 		if (curriculumRepository.existsById(id)) {
 			curriculumRepository.deleteById(id);
+			log.info("Curriculum successfully deleted from MongoDB");
 		}
 		return null;
 	}
@@ -43,6 +44,7 @@ public class CurriculumServiceimpl implements CurriculimService {
 	public Person updatePerson(Person person, String id) {
 		person.setId(id);
 		Person personUpdated = curriculumRepository.save(person);
+		log.info("Curriculum successfully updated in MongoDB");
 		return personUpdated;
 	}
 
